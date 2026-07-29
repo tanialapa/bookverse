@@ -1,15 +1,16 @@
 import Link from "next/link";
+import styles from "./Header.module.css";
 
 export function Header() {
   return (
-    <header className="border-b border-[#173f35]/10 bg-[#f8f6f0]/95">
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-5 sm:px-8 lg:px-12">
+    <header className={styles.header}>
+      <div className={styles.container}>
         <Link
           href="/"
-          className="flex items-center gap-2 text-xl font-bold tracking-tight text-[#173f35]"
+          className={styles.logo}
           aria-label="BookVerse home"
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#173f35] text-lg text-[#fffdf7]">
+          <span className={styles.logoMark}>
             B
           </span>
           BookVerse
@@ -17,15 +18,15 @@ export function Header() {
 
         <nav
           aria-label="Primary navigation"
-          className="order-3 flex w-full items-center justify-center gap-6 text-sm font-medium text-[#49655d] sm:order-2 sm:w-auto"
+          className={styles.navigation}
         >
-          <Link className="transition-colors hover:text-[#b7753f]" href="/">
+          <Link className={styles.homeLink} href="/">
             Home
           </Link>
-          <Link className="transition-colors hover:text-[#173f35]" href="/discover">
+          <Link className={styles.navigationLink} href="/discover">
             Discover
           </Link>
-          <a className="transition-colors hover:text-[#173f35]" href="#">
+          <a className={styles.navigationLink} href="#">
             My Library
           </a>
         </nav>
@@ -33,7 +34,7 @@ export function Header() {
         <button
           type="button"
           aria-label="Sign in to BookVerse"
-          className="order-2 rounded-full border border-[#173f35]/20 px-5 py-2.5 text-sm font-semibold text-[#173f35] transition-colors hover:bg-[#173f35] hover:text-white sm:order-3"
+          className={styles.signInButton}
         >
           Sign In
         </button>

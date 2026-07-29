@@ -1,0 +1,100 @@
+.bookSearch {
+  width: 100%;
+}
+
+.searchContainer {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: #294f45;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.inputContainer {
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  top: 50%;
+  left: 1.25rem;
+  color: #6c8079;
+  font-size: 1.25rem;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.searchInput {
+  width: 100%;
+  min-height: 4rem;
+  padding: 1rem 1.25rem 1rem 3.5rem;
+  border: 1px solid rgb(23 63 53 / 15%);
+  border-radius: 1rem;
+  outline: none;
+  background: #fffdf8;
+  color: #173f35;
+  font-size: 1rem;
+  box-shadow: 0 10px 30px rgb(32 56 49 / 7%);
+}
+
+.searchInput::placeholder {
+  color: #82918c;
+}
+
+.searchInput:focus {
+  border-color: rgb(23 63 53 / 45%);
+  box-shadow:
+    0 10px 30px rgb(32 56 49 / 7%),
+    0 0 0 4px rgb(23 63 53 / 10%);
+}
+
+.resultCount {
+  margin: 2.25rem 0 1.5rem;
+  color: #5f746d;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.emptyState {
+  padding: 4rem 1.5rem;
+  border: 1px dashed rgb(23 63 53 / 20%);
+  border-radius: 1.5rem;
+  background: rgb(255 253 248 / 70%);
+  text-align: center;
+}
+
+.emptyMessage {
+  margin: 0;
+  color: #173f35;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
