@@ -1,7 +1,14 @@
 import Link from "next/link";
+
+import { signOut } from "@/app/auth/actions";
+import { createClient } from "@/lib/supabase/server";
 import styles from "./Header.module.css";
 
-export function Header() {
+export async function Header() {
+  const supabase = await createClient();
+  const { data } = await supabase.auth.getClaims();
+  const isAuthenticated = Boolean(data?.claims.sub);
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -10,9 +17,7 @@ export function Header() {
           className={styles.logo}
           aria-label="BookVerse home"
         >
-          <span className={styles.logoMark}>
-            B
-          </span>
+          <span className={styles.logoMark}>B</span>
           BookVerse
         </Link>
 
@@ -31,13 +36,21 @@ export function Header() {
           </a>
         </nav>
 
-        <button
-          type="button"
-          aria-label="Sign in to BookVerse"
-          className={styles.signInButton}
-        >
-          Sign In
-        </button>
+        {isAuthenticated ? (
+          <form action={signOut} className={styles.authForm}>
+            <button type="submit" className={styles.signInButton}>
+              Sign Out
+            </button>
+          </form>
+        ) : (
+          <Link
+            href="/sign-in"
+            aria-label="Sign in to BookVerse"
+            className={styles.signInButton}
+          >
+            Sign In
+          </Link>
+        )}
       </div>
     </header>
   );
