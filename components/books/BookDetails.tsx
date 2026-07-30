@@ -10,6 +10,10 @@ type BookDetailsProps = {
 
 export function BookDetails({ book }: BookDetailsProps) {
   const authors = book.authors.join(", ");
+  const descriptionParagraphs = book.description
+    .split(/\n\s*\n/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
 
   return (
     <article className={styles.bookDetails}>
@@ -36,7 +40,7 @@ export function BookDetails({ book }: BookDetailsProps) {
                 fill
                 sizes="(max-width: 767px) 80vw, 360px"
                 className={styles.coverImage}
-                priority
+                preload
               />
             )}
           </div>
@@ -64,7 +68,11 @@ export function BookDetails({ book }: BookDetailsProps) {
 
           <section className={styles.descriptionSection}>
             <h2>Description</h2>
-            <p>{book.description}</p>
+            <div className={styles.descriptionParagraphs}>
+              {descriptionParagraphs.map((paragraph, index) => (
+                <p key={`${paragraph.slice(0, 40)}-${index}`}>{paragraph}</p>
+              ))}
+            </div>
           </section>
 
           {book.subjects.length > 0 && (

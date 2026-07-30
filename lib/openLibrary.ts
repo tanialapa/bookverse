@@ -64,16 +64,35 @@ async function getPageCount(id: string) {
   }
 }
 
+function normalizeDescription(description: string) {
+  // Keep link labels, remove HTML tags, and collapse excessive blank lines.
+  const normalized = description
+    .replace(/\[([^\]]+)\]\([^\s)]+(?:\s+[^)]*)?\)/g, "$1")
+    .replace(/<[^>]*>/g, "")
+    .replace(/\r\n?/g, "\n")
+    .replace(/\n[\t ]*\n(?:[\t ]*\n)+/g, "\n\n")
+    .trim();
+  const lines = normalized.split("\n");
+
+  if (/^Sources?$/i.test(lines.at(-1)?.trim() ?? "")) {
+    lines.pop();
+  }
+
+  return lines.join("\n").trim();
+}
+
 function getDescription(description: OpenLibraryWorkResponse["description"]) {
+  let value: string | undefined;
+
   if (typeof description === "string") {
-    return description;
+    value = description;
+  } else if (description && typeof description.value === "string") {
+    value = description.value;
   }
 
-  if (description && typeof description.value === "string") {
-    return description.value;
-  }
+  const normalizedDescription = value ? normalizeDescription(value) : "";
 
-  return "No description is available for this book.";
+  return normalizedDescription || "No description is available for this book.";
 }
 
 export async function getBookDetails(id: string): Promise<BookDetails | null> {
