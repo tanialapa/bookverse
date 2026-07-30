@@ -23,6 +23,10 @@
   box-shadow: 0 14px 25px rgb(26 46 40 / 18%);
 }
 
+.coverImage {
+  object-fit: cover;
+}
+
 .forest {
   background: linear-gradient(145deg, #204f40, #0f332b);
   color: #f1dfb5;

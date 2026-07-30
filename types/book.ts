@@ -1,10 +1,14 @@
 export type CoverVariant = "forest" | "midnight" | "sunrise" | "terracotta";
 
 export type Book = {
-  id: number;
+  id: string;
   title: string;
-  author: string;
+  authors: string[];
   category: string;
-  rating: number;
+  rating: number | null;
+  description: string;
+  publishedDate: string;
+  pageCount: number | null;
+  coverUrl: string | null;
   coverVariant: CoverVariant;
 };

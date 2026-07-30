@@ -1,41 +1,8 @@
 import { BookCard } from "@/components/books/BookCard";
-import type { Book } from "@/types/book";
+import { books } from "@/data/books";
 import styles from "./PopularBooks.module.css";
 
-const popularBooks: Book[] = [
-  {
-    id: 1,
-    title: "The Hobbit",
-    author: "J.R.R. Tolkien",
-    category: "Fantasy",
-    rating: 4.8,
-    coverVariant: "forest",
-  },
-  {
-    id: 2,
-    title: "1984",
-    author: "George Orwell",
-    category: "Dystopian",
-    rating: 4.7,
-    coverVariant: "midnight",
-  },
-  {
-    id: 3,
-    title: "Atomic Habits",
-    author: "James Clear",
-    category: "Self-development",
-    rating: 4.6,
-    coverVariant: "sunrise",
-  },
-  {
-    id: 4,
-    title: "The Alchemist",
-    author: "Paulo Coelho",
-    category: "Fiction",
-    rating: 4.5,
-    coverVariant: "terracotta",
-  },
-];
+const popularBooks = books.slice(0, 4);
 
 export function PopularBooks() {
   return (

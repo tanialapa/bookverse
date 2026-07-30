@@ -2,7 +2,7 @@
   width: 100%;
 }
 
-.searchContainer {
+.form {
   max-width: 48rem;
   margin: 0 auto;
 }
@@ -15,8 +15,15 @@
   font-weight: 600;
 }
 
+.searchField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
 .inputContainer {
   position: relative;
+  flex: 1;
 }
 
 .searchIcon {
@@ -53,48 +60,100 @@
     0 0 0 4px rgb(23 63 53 / 10%);
 }
 
-.resultCount {
-  margin: 2.25rem 0 1.5rem;
+.searchButton {
+  min-height: 4rem;
+  padding: 1rem 2rem;
+  border: 1px solid #173f35;
+  border-radius: 1rem;
+  background: #173f35;
+  color: #fffdf8;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgb(23 63 53 / 16%);
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.searchButton:hover:not(:disabled) {
+  background: #245a4d;
+  transform: translateY(-1px);
+}
+
+.searchButton:focus-visible {
+  outline: 3px solid #d29b55;
+  outline-offset: 3px;
+}
+
+.searchButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.status {
+  min-height: 5.5rem;
+  padding-top: 2.25rem;
+}
+
+.loadingState,
+.errorMessage,
+.initialMessage,
+.emptyMessage {
+  margin: 0;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.loadingState,
+.initialMessage {
+  background: rgb(237 240 232 / 75%);
+  color: #5f746d;
+}
+
+.errorMessage {
+  border: 1px solid rgb(166 75 61 / 20%);
+  background: #fff2ed;
+  color: #8b4035;
+}
+
+.emptyMessage {
+  border: 1px dashed rgb(23 63 53 / 20%);
+  background: rgb(255 253 248 / 70%);
+  color: #173f35;
+  font-weight: 600;
+}
+
+.resultsCount {
+  margin: 0 0 1.5rem;
   color: #5f746d;
   font-size: 0.875rem;
   font-weight: 600;
 }
 
-.grid {
+.resultsGrid {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 1.5rem;
 }
 
-.emptyState {
-  padding: 4rem 1.5rem;
-  border: 1px dashed rgb(23 63 53 / 20%);
-  border-radius: 1.5rem;
-  background: rgb(255 253 248 / 70%);
-  text-align: center;
-}
-
-.emptyMessage {
-  margin: 0;
-  color: #173f35;
-  font-size: 1.125rem;
-  font-weight: 600;
-}
-
 @media (min-width: 640px) {
-  .grid {
+  .searchField {
+    flex-direction: row;
+  }
+
+  .resultsGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 1024px) {
-  .grid {
+  .resultsGrid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 1280px) {
-  .grid {
+  .resultsGrid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
