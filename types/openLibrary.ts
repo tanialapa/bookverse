@@ -14,3 +14,27 @@ export type OpenLibrarySearchResponse = {
   start: number;
   docs: OpenLibraryBookDocument[];
 };
+
+export type OpenLibraryWorkResponse = {
+  key?: string;
+  title?: string;
+  description?: string | { value?: string };
+  covers?: number[];
+  subjects?: string[];
+  first_publish_date?: string;
+  authors?: {
+    author?: {
+      key?: string;
+    };
+  }[];
+};
+
+export type OpenLibraryAuthorResponse = {
+  name?: string;
+};
+
+export type OpenLibraryEditionsResponse = {
+  entries?: {
+    number_of_pages?: number;
+  }[];
+};

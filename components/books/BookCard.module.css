@@ -24,7 +24,17 @@
 }
 
 .coverImage {
+  z-index: 1;
   object-fit: cover;
+}
+
+.fallbackCover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
 }
 
 .forest {
@@ -153,15 +163,38 @@
   font-weight: 600;
 }
 
-.detailsButton {
+.detailsButton,
+.detailsLink {
+  display: flex;
   width: 100%;
   margin-top: 1.25rem;
+  align-items: center;
+  justify-content: center;
   padding: 0.75rem 1rem;
-  cursor: not-allowed;
   border: 1px solid rgb(23 63 53 / 15%);
   border-radius: 9999px;
   background: transparent;
-  color: rgb(23 63 53 / 55%);
   font-size: 0.875rem;
   font-weight: 600;
+}
+
+.detailsButton {
+  color: rgb(23 63 53 / 55%);
+  cursor: not-allowed;
+}
+
+.detailsLink {
+  color: #173f35;
+  text-decoration: none;
+  transition: color 150ms ease, background-color 150ms ease;
+}
+
+.detailsLink:hover {
+  background: #173f35;
+  color: #fffdf8;
+}
+
+.detailsLink:focus-visible {
+  outline: 3px solid #d29b55;
+  outline-offset: 3px;
 }

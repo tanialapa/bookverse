@@ -21,6 +21,14 @@ const openLibraryFields = [
   "number_of_pages_median",
 ].join(",");
 
+const workIdPattern = /^OL\d+W$/;
+
+function getWorkId(key?: string) {
+  const workId = key?.replace(/^\/works\//, "");
+
+  return workId && workIdPattern.test(workId) ? workId : null;
+}
+
 export async function GET(request: NextRequest) {
   const query = request.nextUrl.searchParams.get("q")?.trim();
 
@@ -57,28 +65,36 @@ export async function GET(request: NextRequest) {
     }
 
     const data = (await response.json()) as OpenLibrarySearchResponse;
-    const normalizedBooks: Book[] = data.docs.map((doc, index) => ({
-      id: doc.key ?? `open-library-book-${index}`,
-      title: doc.title ?? "Untitled",
-      authors: doc.author_name ?? ["Unknown author"],
-      category: doc.subject?.[0] ?? "Uncategorized",
-      rating:
-        typeof doc.ratings_average === "number" ? doc.ratings_average : null,
-      description: "",
-      publishedDate:
-        typeof doc.first_publish_year === "number"
-          ? String(doc.first_publish_year)
-          : "Unknown",
-      pageCount:
-        typeof doc.number_of_pages_median === "number"
-          ? doc.number_of_pages_median
-          : null,
-      coverUrl:
-        typeof doc.cover_i === "number"
-          ? `https://covers.openlibrary.org/b/id/${doc.cover_i}-L.jpg?default=false`
-          : null,
-      coverVariant: coverVariants[index % coverVariants.length],
-    }));
+    const normalizedBooks: Book[] = data.docs.flatMap((doc, index) => {
+      const id = getWorkId(doc.key);
+
+      if (!id) {
+        return [];
+      }
+
+      return [{
+        id,
+        title: doc.title ?? "Untitled",
+        authors: doc.author_name ?? ["Unknown author"],
+        category: doc.subject?.[0] ?? "Uncategorized",
+        rating:
+          typeof doc.ratings_average === "number" ? doc.ratings_average : null,
+        description: "",
+        publishedDate:
+          typeof doc.first_publish_year === "number"
+            ? String(doc.first_publish_year)
+            : "Unknown",
+        pageCount:
+          typeof doc.number_of_pages_median === "number"
+            ? doc.number_of_pages_median
+            : null,
+        coverUrl:
+          typeof doc.cover_i === "number"
+            ? `https://covers.openlibrary.org/b/id/${doc.cover_i}-L.jpg?default=false`
+            : null,
+        coverVariant: coverVariants[index % coverVariants.length],
+      }];
+    });
 
     return Response.json({ books: normalizedBooks });
   } catch (error: unknown) {

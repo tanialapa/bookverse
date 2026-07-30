@@ -12,3 +12,15 @@ export type Book = {
   coverUrl: string | null;
   coverVariant: CoverVariant;
 };
+
+export type BookDetails = {
+  id: string;
+  title: string;
+  authors: string[];
+  description: string;
+  coverUrl: string | null;
+  firstPublished: string;
+  pageCount: number | null;
+  subjects: string[];
+  openLibraryUrl: string;
+};

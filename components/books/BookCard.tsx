@@ -1,38 +1,21 @@
-"use client";
-
 import Image from "next/image";
-import { useState } from "react";
+import Link from "next/link";
 
 import type { Book } from "@/types/book";
 import styles from "./BookCard.module.css";
 
 type BookCardProps = {
   book: Book;
+  detailsHref?: string;
 };
 
-export function BookCard({ book }: BookCardProps) {
+export function BookCard({ book, detailsHref }: BookCardProps) {
   const authors = book.authors.join(", ");
-  const [hasImageError, setHasImageError] = useState(false);
-  const coverUrl = hasImageError ? null : book.coverUrl;
 
   return (
     <article className={styles.card}>
-      {coverUrl ? (
-        <div className={styles.cover}>
-          <Image
-            src={coverUrl}
-            alt={`Cover of ${book.title}`}
-            fill
-            sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 25vw"
-            className={styles.coverImage}
-            onError={() => setHasImageError(true)}
-          />
-        </div>
-      ) : (
-        <div
-          className={`${styles.cover} ${styles[book.coverVariant]}`}
-          aria-hidden="true"
-        >
+      <div className={`${styles.cover} ${styles[book.coverVariant]}`}>
+        <div className={styles.fallbackCover} aria-hidden="true">
           <div className={styles.spine} />
           <p className={styles.coverEdition}>BookVerse selection</p>
           <div>
@@ -42,7 +25,17 @@ export function BookCard({ book }: BookCardProps) {
           </div>
           <span className={styles.coverLine} />
         </div>
-      )}
+
+        {book.coverUrl && (
+          <Image
+            src={book.coverUrl}
+            alt={`Cover of ${book.title}`}
+            fill
+            sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 25vw"
+            className={styles.coverImage}
+          />
+        )}
+      </div>
 
       <div className={styles.details}>
         <div className={styles.detailsHeader}>
@@ -62,17 +55,21 @@ export function BookCard({ book }: BookCardProps) {
             )}
           </span>
         </div>
-        <p className={styles.category}>
-          {book.category}
-        </p>
-        <button
-          type="button"
-          disabled
-          aria-label={`View details for ${book.title} (coming soon)`}
-          className={styles.detailsButton}
-        >
-          View details
-        </button>
+        <p className={styles.category}>{book.category}</p>
+        {detailsHref ? (
+          <Link href={detailsHref} className={styles.detailsLink}>
+            View details
+          </Link>
+        ) : (
+          <button
+            type="button"
+            disabled
+            aria-label={`View details for ${book.title} (coming soon)`}
+            className={styles.detailsButton}
+          >
+            View details
+          </button>
+        )}
       </div>
     </article>
   );
