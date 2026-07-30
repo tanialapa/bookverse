@@ -18,6 +18,28 @@ BookVerse helps readers discover books, save them to a private library, and keep
 - Filtering and sorting
 - Responsive design
 
+## Screenshots
+
+### Home page
+
+![BookVerse home page](public/screenshots/home.png)
+
+### Book search
+
+![BookVerse book search](public/screenshots/discover.png)
+
+### Book details
+
+![BookVerse book details](public/screenshots/book-details.png)
+
+### Personal library
+
+![BookVerse personal library](public/screenshots/library.png)
+
+### Edit reading progress
+
+![BookVerse edit reading progress](public/screenshots/edit-book.png)
+
 ## Technologies
 
 - Next.js App Router
