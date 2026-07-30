@@ -61,14 +61,9 @@ export function BookCard({ book, detailsHref }: BookCardProps) {
             View details
           </Link>
         ) : (
-          <button
-            type="button"
-            disabled
-            aria-label={`View details for ${book.title} (coming soon)`}
-            className={styles.detailsButton}
-          >
-            View details
-          </button>
+          <Link href="/discover" className={styles.detailsLink}>
+            Find on Discover
+          </Link>
         )}
       </div>
     </article>

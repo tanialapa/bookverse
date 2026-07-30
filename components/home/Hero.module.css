@@ -81,10 +81,15 @@
 }
 
 .secondaryButton {
-  cursor: not-allowed;
   border: 1px solid rgb(23 63 53 / 15%);
   background: rgb(255 255 255 / 40%);
-  color: rgb(23 63 53 / 60%);
+  color: #173f35;
+  text-decoration: none;
+  transition: background-color 150ms ease;
+}
+
+.secondaryButton:hover {
+  background: rgb(255 255 255 / 75%);
 }
 
 .bookComposition {

@@ -1,0 +1,68 @@
+.page {
+  min-height: 100vh;
+}
+
+.main {
+  display: grid;
+  place-items: start center;
+  padding: 3rem 1.25rem 6rem;
+}
+
+.card {
+  display: grid;
+  width: 100%;
+  max-width: 42rem;
+  padding: 2rem;
+  gap: 1.5rem;
+  border-radius: 1.5rem;
+  background: rgb(23 63 53 / 6%);
+}
+
+.heading,
+.field,
+.textarea,
+.button {
+  border-radius: 0.875rem;
+  background: rgb(23 63 53 / 12%);
+}
+
+.heading {
+  width: 55%;
+  height: 3.5rem;
+}
+
+.field {
+  height: 3.25rem;
+}
+
+.textarea {
+  height: 10rem;
+}
+
+.button {
+  width: 10rem;
+  height: 3.25rem;
+  border-radius: 9999px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card {
+    animation: pulse 1.8s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes pulse {
+  to {
+    opacity: 0.58;
+  }
+}
+
+@media (min-width: 640px) {
+  .main {
+    padding: 4rem 2rem 7rem;
+  }
+
+  .card {
+    padding: 2.75rem;
+  }
+}

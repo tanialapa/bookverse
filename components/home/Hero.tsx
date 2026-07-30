@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import styles from "./Hero.module.css";
 
 const decorativeBooks = [
@@ -40,14 +42,9 @@ export function Hero() {
           >
             Explore books
           </a>
-          <button
-            type="button"
-            disabled
-            aria-label="View my library (coming soon)"
-            className={styles.secondaryButton}
-          >
+          <Link href="/library" className={styles.secondaryButton}>
             View my library
-          </button>
+          </Link>
         </div>
       </div>
 

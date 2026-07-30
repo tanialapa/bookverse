@@ -21,7 +21,8 @@
 }
 
 .backLink:focus-visible,
-.primaryLink:focus-visible {
+.primaryLink:focus-visible,
+.libraryButton:focus-visible {
   outline: 3px solid #d29b55;
   outline-offset: 3px;
 }
@@ -199,6 +200,10 @@
   gap: 0.75rem;
 }
 
+.libraryForm {
+  margin: 0;
+}
+
 .primaryLink,
 .libraryButton {
   display: inline-flex;
@@ -227,15 +232,25 @@
 .libraryButton {
   border: 1px solid rgb(23 63 53 / 15%);
   background: transparent;
-  color: rgb(23 63 53 / 55%);
-  cursor: not-allowed;
+  color: #173f35;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
 }
 
-.comingSoon {
-  margin: 0.75rem 0 0;
-  color: #7b8984;
-  font-size: 0.8125rem;
-  text-align: center;
+.libraryButton:hover {
+  background: #edf0e8;
+}
+
+.errorMessage {
+  margin: 2rem 0 0;
+  padding: 0.875rem 1rem;
+  border: 1px solid rgb(153 57 47 / 20%);
+  border-radius: 0.875rem;
+  background: #fff0ed;
+  color: #8a3028;
+  font-size: 0.875rem;
+  line-height: 1.5;
 }
 
 @media (min-width: 640px) {
@@ -253,8 +268,8 @@
     min-width: 12rem;
   }
 
-  .comingSoon {
-    text-align: left;
+  .libraryForm {
+    display: flex;
   }
 }
 

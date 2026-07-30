@@ -1,0 +1,206 @@
+.card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgb(23 63 53 / 10%);
+  border-radius: 1.25rem;
+  background: rgb(255 253 248 / 86%);
+  box-shadow: 0 16px 36px rgb(23 63 53 / 8%);
+}
+
+.cover {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: linear-gradient(145deg, #285d4e, #173f35);
+}
+
+.fallbackCover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  color: #f5e5bd;
+}
+
+.fallbackCover p {
+  max-width: 15rem;
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.coverMark {
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border: 1px solid rgb(245 229 189 / 35%);
+  border-radius: 0.75rem;
+  font-weight: 800;
+}
+
+.coverImage {
+  z-index: 1;
+  object-fit: cover;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.status {
+  align-self: flex-start;
+  padding: 0.35rem 0.65rem;
+  border-radius: 9999px;
+  background: #edf0e8;
+  color: #49655d;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 1rem 0 0;
+  color: #173f35;
+  font-size: 1.3rem;
+  line-height: 1.25;
+}
+
+.authors {
+  margin: 0.55rem 0 0;
+  color: #65756f;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.readingDetails {
+  display: grid;
+  margin: 1rem 0 0;
+  gap: 0.65rem;
+}
+
+.progressText,
+.rating,
+.notes {
+  margin: 0;
+  color: #49655d;
+  font-size: 0.825rem;
+  line-height: 1.5;
+}
+
+.progressText {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-weight: 600;
+}
+
+.progressBar {
+  width: 100%;
+  height: 0.55rem;
+  overflow: hidden;
+  border: 0;
+  border-radius: 9999px;
+  accent-color: #b7753f;
+}
+
+.progressBar::-webkit-progress-bar {
+  border-radius: 9999px;
+  background: #e5eae3;
+}
+
+.progressBar::-webkit-progress-value {
+  border-radius: 9999px;
+  background: #b7753f;
+}
+
+.progressBar::-moz-progress-bar {
+  border-radius: 9999px;
+  background: #b7753f;
+}
+
+.rating {
+  font-weight: 600;
+}
+
+.notes {
+  color: #6b7974;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  gap: 1rem;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.actions form {
+  margin: 0;
+}
+
+.detailsLink,
+.editLink,
+.removeButton {
+  font-size: 0.825rem;
+  font-weight: 700;
+}
+
+.detailsLink,
+.editLink {
+  color: #173f35;
+  text-decoration: none;
+}
+
+.detailsLink:hover,
+.editLink:hover {
+  color: #b7753f;
+}
+
+.removeButton {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgb(138 48 40 / 18%);
+  border-radius: 9999px;
+  background: transparent;
+  color: #8a3028;
+  cursor: pointer;
+}
+
+.removeButton:hover {
+  background: #fff0ed;
+}
+
+.detailsLink:focus-visible,
+.editLink:focus-visible,
+.removeButton:focus-visible {
+  outline: 3px solid #d29b55;
+  outline-offset: 3px;
+}
+
+@media (max-width: 639px) {
+  .actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .actions form,
+  .removeButton {
+    width: 100%;
+  }
+}

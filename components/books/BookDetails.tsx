@@ -1,14 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { addBookToLibrary } from "@/app/library/actions";
 import type { BookDetails as BookDetailsType } from "@/types/book";
 import styles from "./BookDetails.module.css";
 
 type BookDetailsProps = {
   book: BookDetailsType;
+  isAuthenticated: boolean;
+  error?: string;
 };
 
-export function BookDetails({ book }: BookDetailsProps) {
+export function BookDetails({
+  book,
+  isAuthenticated,
+  error,
+}: BookDetailsProps) {
   const authors = book.authors.join(", ");
   const descriptionParagraphs = book.description
     .split(/\n\s*\n/)
@@ -86,6 +93,12 @@ export function BookDetails({ book }: BookDetailsProps) {
             </section>
           )}
 
+          {error && (
+            <p className={styles.errorMessage} role="alert">
+              {error}
+            </p>
+          )}
+
           <div className={styles.actions}>
             <a
               href={book.openLibraryUrl}
@@ -95,11 +108,23 @@ export function BookDetails({ book }: BookDetailsProps) {
             >
               View on Open Library
             </a>
-            <button type="button" disabled className={styles.libraryButton}>
-              Add to My Library
-            </button>
+            {isAuthenticated ? (
+              <form action={addBookToLibrary} className={styles.libraryForm}>
+                <input
+                  type="hidden"
+                  name="openLibraryId"
+                  value={book.id}
+                />
+                <button type="submit" className={styles.libraryButton}>
+                  Add to My Library
+                </button>
+              </form>
+            ) : (
+              <Link href="/sign-in" className={styles.libraryButton}>
+                Sign in to add this book
+              </Link>
+            )}
           </div>
-          <p className={styles.comingSoon}>Library feature coming next.</p>
         </div>
       </div>
     </article>

@@ -1,0 +1,107 @@
+.formWrapper {
+  margin-top: 2rem;
+}
+
+.errorMessage {
+  margin: 0 0 1.5rem;
+  padding: 0.875rem 1rem;
+  border: 1px solid rgb(153 57 47 / 20%);
+  border-radius: 0.875rem;
+  background: #fff0ed;
+  color: #8a3028;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.form {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.field label {
+  color: #173f35;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgb(23 63 53 / 18%);
+  border-radius: 0.875rem;
+  background: #fffdf8;
+  color: #173f35;
+  font: inherit;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.field input,
+.field select {
+  min-height: 3.25rem;
+}
+
+.field textarea {
+  min-height: 10rem;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible {
+  border-color: #2f6758;
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(47 103 88 / 16%);
+}
+
+.helpText {
+  margin: 0;
+  color: #73817c;
+  font-size: 0.78rem;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cancelLink {
+  display: inline-flex;
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 1.5rem;
+  border: 1px solid rgb(23 63 53 / 15%);
+  border-radius: 9999px;
+  color: #173f35;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.cancelLink:hover {
+  background: #edf0e8;
+}
+
+.cancelLink:focus-visible {
+  outline: 3px solid #d29b55;
+  outline-offset: 3px;
+}
+
+@media (min-width: 640px) {
+  .actions {
+    flex-direction: row;
+  }
+
+  .cancelLink {
+    min-width: 9rem;
+  }
+}

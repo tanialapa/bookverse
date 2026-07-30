@@ -31,9 +31,9 @@ export async function Header() {
           <Link className={styles.navigationLink} href="/discover">
             Discover
           </Link>
-          <a className={styles.navigationLink} href="#">
+          <Link className={styles.navigationLink} href="/library">
             My Library
-          </a>
+          </Link>
         </nav>
 
         {isAuthenticated ? (

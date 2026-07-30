@@ -1,0 +1,96 @@
+.page {
+  min-height: 100vh;
+}
+
+.main {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 6rem;
+}
+
+.heading,
+.card {
+  background: rgb(23 63 53 / 8%);
+}
+
+.heading {
+  width: min(100%, 24rem);
+  height: 4rem;
+  border-radius: 1rem;
+}
+
+.grid {
+  display: grid;
+  margin-top: 2.5rem;
+  gap: 1.5rem;
+}
+
+.card {
+  overflow: hidden;
+  border-radius: 1.25rem;
+}
+
+.cover {
+  aspect-ratio: 4 / 3;
+  background: rgb(23 63 53 / 12%);
+}
+
+.content {
+  display: grid;
+  padding: 1.5rem;
+  gap: 0.85rem;
+}
+
+.shortLine,
+.mediumLine,
+.longLine {
+  height: 0.9rem;
+  border-radius: 9999px;
+  background: rgb(23 63 53 / 12%);
+}
+
+.shortLine {
+  width: 32%;
+}
+
+.mediumLine {
+  width: 58%;
+}
+
+.longLine {
+  width: 86%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .heading,
+  .card {
+    animation: pulse 1.8s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes pulse {
+  to {
+    opacity: 0.58;
+  }
+}
+
+@media (min-width: 640px) {
+  .main {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .main {
+    padding: 4rem 3rem 7rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

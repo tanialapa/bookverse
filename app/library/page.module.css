@@ -1,0 +1,154 @@
+.page {
+  min-height: 100vh;
+}
+
+.main {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 6rem;
+}
+
+.introduction {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  color: #b7753f;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  color: #173f35;
+  font-size: 2.5rem;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.description {
+  max-width: 42rem;
+  margin: 1rem 0 0;
+  color: #5f706b;
+  line-height: 1.7;
+}
+
+.count {
+  align-self: flex-start;
+  margin: 0;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid rgb(23 63 53 / 10%);
+  border-radius: 9999px;
+  background: rgb(255 253 248 / 75%);
+  color: #49655d;
+  font-size: 0.825rem;
+  font-weight: 700;
+}
+
+.errorMessage,
+.successMessage,
+.loadError {
+  margin: 2rem 0 0;
+  padding: 0.9rem 1rem;
+  border-radius: 0.875rem;
+  font-size: 0.875rem;
+}
+
+.errorMessage,
+.loadError {
+  border: 1px solid rgb(153 57 47 / 20%);
+  background: #fff0ed;
+  color: #8a3028;
+}
+
+.successMessage {
+  border: 1px solid rgb(23 63 53 / 16%);
+  background: #edf4ed;
+  color: #28574a;
+}
+
+.grid {
+  display: grid;
+  margin-top: 2.5rem;
+  gap: 1.5rem;
+}
+
+.emptyState {
+  margin-top: 3rem;
+  padding: 3rem 1.5rem;
+  border: 1px solid rgb(23 63 53 / 10%);
+  border-radius: 1.5rem;
+  background: rgb(255 253 248 / 72%);
+  text-align: center;
+}
+
+.emptyState h2 {
+  margin: 0;
+  color: #173f35;
+  font-size: 1.5rem;
+}
+
+.emptyState p {
+  margin: 0.75rem 0 0;
+  color: #65756f;
+}
+
+.discoverLink {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 9999px;
+  background: #173f35;
+  color: #fffdf8;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.discoverLink:hover {
+  background: #245a4d;
+}
+
+.discoverLink:focus-visible {
+  outline: 3px solid #d29b55;
+  outline-offset: 3px;
+}
+
+@media (min-width: 640px) {
+  .main {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+
+  .introduction {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .main {
+    padding: 4rem 3rem 7rem;
+  }
+
+  .title {
+    font-size: 3.5rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
